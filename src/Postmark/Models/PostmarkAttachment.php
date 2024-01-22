@@ -30,7 +30,7 @@ final class PostmarkAttachment implements JsonSerializable
         string|null $mimeType = null,
         private string|null $contentId = null,
     ) {
-        $this->mimeType = $mimeType ?: self::DEFAULT_MIMETYPE;
+        $this->mimeType = $mimeType ?? self::DEFAULT_MIMETYPE;
     }
 
     /**
@@ -96,8 +96,8 @@ final class PostmarkAttachment implements JsonSerializable
         return [
             'Name' => $this->attachmentName,
             'Content' => $this->base64EncodedData,
-            'ContentType' => $this->mimeType ?: 'application/octet-stream',
-            'ContentId' => $this->contentId ?: $this->attachmentName,
+            'ContentType' => $this->mimeType,
+            'ContentId' => $this->contentId ?? $this->attachmentName,
         ];
     }
 }

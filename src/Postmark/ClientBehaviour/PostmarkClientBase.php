@@ -20,6 +20,7 @@ use Psr\Http\Message\UriInterface;
 
 use function array_filter;
 use function http_build_query;
+use function is_string;
 use function json_decode;
 use function json_encode;
 use function sprintf;
@@ -117,7 +118,7 @@ abstract class PostmarkClientBase
                 throw InvalidRequestMethod::with($method);
         }
 
-        if (! empty($query)) {
+        if (is_string($query) && $query !== '') {
             $target = $target->withQuery($query);
         }
 
