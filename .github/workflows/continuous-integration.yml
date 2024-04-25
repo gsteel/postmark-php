@@ -23,7 +23,7 @@ jobs:
     name: Test Coverage
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.3
+      - uses: actions/checkout@v4.1.4
       - uses: shivammathur/setup-php@2.30.4
         with:
           php-version: ${{ env.stable_php }}
@@ -44,7 +44,7 @@ jobs:
     name: "Check for missing dependencies"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: actions/checkout@v4.1.3
+      - uses: actions/checkout@v4.1.4
       - uses: shivammathur/setup-php@2.30.4
         with:
           php-version: ${{ env.stable_php }}
