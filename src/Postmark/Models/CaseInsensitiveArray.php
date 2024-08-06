@@ -20,12 +20,17 @@ use const CASE_LOWER;
  * CaseInsensitiveArray allows accessing elements with mixed-case keys.
  * This allows access to the array to be very forgiving. (i.e. If you access something
  * with the wrong CaSe, it'll still find the correct element)
+ *
+ * @implements ArrayAccess<array-key, mixed>
+ * @implements Iterator<array-key, mixed>
  */
 class CaseInsensitiveArray implements ArrayAccess, Iterator
 {
     /** @var array<array-key, mixed> */
     private array $data;
     private int $pointer = 0;
+    /** @var array<array-key, mixed> */
+    private array $payload;
 
     private function normaliseOffset(string $offset): string
     {
@@ -39,7 +44,18 @@ class CaseInsensitiveArray implements ArrayAccess, Iterator
      */
     public function __construct(array $initialArray = [])
     {
+        $this->payload = $initialArray;
         $this->data = array_change_key_case($initialArray, CASE_LOWER);
+    }
+
+    /**
+     * Provides a way of accessing the initial payload as returned by the server with key casing preserved
+     *
+     * @return array<array-key, mixed>
+     */
+    public function getPayload(): array
+    {
+        return $this->payload;
     }
 
     /** @param array-key|null $offset */
