@@ -6,14 +6,15 @@ namespace Postmark\ClientBehaviour;
 
 use Postmark\Models\DynamicResponseModel;
 use Postmark\PostmarkClient;
+use Postmark\PostmarkClientInterface;
 
 use function sprintf;
 
 /**
  * @see PostmarkClient
  *
- * @psalm-import-type TemplateId from PostmarkClient
- * @psalm-import-type TemplateModel from PostmarkClient
+ * @psalm-import-type TemplateId from PostmarkClientInterface
+ * @psalm-import-type TemplateModel from PostmarkClientInterface
  */
 trait Templates
 {
