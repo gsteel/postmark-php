@@ -26,7 +26,7 @@ use function strtolower;
  * @link JsonSerializable (Preserve Import)
  *
  * @psalm-type Attachments = list<PostmarkAttachment>|null
- * @psalm-type HeaderList = array<string, scalar|null>
+ * @psalm-type HeaderList = array<string, scalar|null>|array<array-key, Header>
  * @psalm-type MetaData = array<string, scalar>
  * @psalm-type TemplateId = non-empty-string|positive-int
  * @psalm-type EmailMessage = array{
