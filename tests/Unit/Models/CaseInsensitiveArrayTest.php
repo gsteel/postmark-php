@@ -61,4 +61,30 @@ class CaseInsensitiveArrayTest extends TestCase
         unset($data['fOo']);
         self::assertArrayNotHasKey('foo', $data);
     }
+
+    public function testThatTheInitialPayloadCanBeAccessed(): void
+    {
+        $payload = [
+            'Foo' => 'foo',
+            'bar' => 'bar',
+            'bAz' => 'baz',
+            'BING' => 'bing',
+        ];
+
+        $data = new CaseInsensitiveArray($payload);
+
+        self::assertSame($payload, $data->getPayload());
+    }
+
+    public function testThatTheInitialPayloadWillIncludeNestedArrays(): void
+    {
+        $payload = [
+            'SomeScalar' => 'foo',
+            'NestedArray' => ['OtherValue' => 'Bar'],
+        ];
+
+        $data = new CaseInsensitiveArray($payload);
+
+        self::assertSame($payload, $data->getPayload());
+    }
 }
