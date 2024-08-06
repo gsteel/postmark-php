@@ -33,7 +33,6 @@ use const PHP_OS_FAMILY;
 use const PHP_QUERY_RFC3986;
 use const PHP_RELEASE_VERSION;
 
-/** @internal Postmark */
 abstract class PostmarkClientBase
 {
     use Discovery;

@@ -9,7 +9,6 @@ use Postmark\Models\Suppressions\SuppressionChangeRequest;
 
 use function sprintf;
 
-/** @internal \Postmark */
 trait Suppressions
 {
     /**

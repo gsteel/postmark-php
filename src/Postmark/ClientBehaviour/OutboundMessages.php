@@ -11,8 +11,6 @@ use function is_string;
 use function sprintf;
 
 /**
- * @internal \Postmark
- *
  * @see PostmarkClient
  *
  * @psalm-import-type MetaData from PostmarkClient
