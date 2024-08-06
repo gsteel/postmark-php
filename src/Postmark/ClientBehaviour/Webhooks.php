@@ -9,13 +9,14 @@ use Postmark\Models\Header;
 use Postmark\Models\Webhooks\HttpAuth;
 use Postmark\Models\Webhooks\WebhookConfigurationTriggers;
 use Postmark\PostmarkClient;
+use Postmark\PostmarkClientInterface;
 
 use function sprintf;
 
 /**
  * @see PostmarkClient
  *
- * @psalm-import-type HeaderList from PostmarkClient
+ * @psalm-import-type HeaderList from PostmarkClientInterface
  */
 trait Webhooks
 {

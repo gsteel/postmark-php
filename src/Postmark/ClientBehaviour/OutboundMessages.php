@@ -6,6 +6,7 @@ namespace Postmark\ClientBehaviour;
 
 use Postmark\Models\DynamicResponseModel;
 use Postmark\PostmarkClient;
+use Postmark\PostmarkClientInterface;
 
 use function is_string;
 use function sprintf;
@@ -13,7 +14,7 @@ use function sprintf;
 /**
  * @see PostmarkClient
  *
- * @psalm-import-type MetaData from PostmarkClient
+ * @psalm-import-type MetaData from PostmarkClientInterface
  */
 trait OutboundMessages
 {
