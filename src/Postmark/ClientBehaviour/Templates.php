@@ -10,8 +10,6 @@ use Postmark\PostmarkClient;
 use function sprintf;
 
 /**
- * @internal \Postmark
- *
  * @see PostmarkClient
  *
  * @psalm-import-type TemplateId from PostmarkClient
