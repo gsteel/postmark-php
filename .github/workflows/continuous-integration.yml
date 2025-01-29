@@ -8,8 +8,8 @@ on:
     tags:
 
 env:
-  default_php: 8.1
-  stable_php: 8.1
+  default_php: 8.2
+  stable_php: 8.2
 
 
 jobs:
@@ -49,6 +49,4 @@ jobs:
           ini-values: memory_limit=-1
           extensions: ${{ env.php_extensions }}
       - uses: "ramsey/composer-install@3.0.0"
-      - run: composer global config bin-dir /usr/local/bin
-      - run: composer global require -W maglnet/composer-require-checker
-      - run: /usr/local/bin/composer-require-checker check
+      - run: make deps

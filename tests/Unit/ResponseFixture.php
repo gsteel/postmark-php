@@ -10,8 +10,10 @@ use Laminas\Diactoros\StreamFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
+use function assert;
 use function file_exists;
 use function file_get_contents;
+use function is_string;
 use function sprintf;
 
 final class ResponseFixture
@@ -19,7 +21,7 @@ final class ResponseFixture
     private StreamInterface $jsonBody;
 
     public function __construct(
-        private int $responseCode,
+        private readonly int $responseCode,
         string $jsonBody,
     ) {
         $this->jsonBody = (new StreamFactory())->createStream($jsonBody);
@@ -40,6 +42,9 @@ final class ResponseFixture
             throw new InvalidArgumentException(sprintf('The file "%s" cannot be found', $filename));
         }
 
-        return new self($statusCode, file_get_contents($path));
+        $contents = file_get_contents($path);
+        assert(is_string($contents));
+
+        return new self($statusCode, $contents);
     }
 }

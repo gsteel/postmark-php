@@ -74,7 +74,7 @@ class WebhookConfigurationTriggersTest extends TestCase
         foreach ($expectKeys as $key) {
             self::assertArrayHasKey($key, $decoded);
             self::assertIsArray($decoded[$key], 'Each type of hook configuration should be encoded to json');
-            self::assertContainsOnly('bool', $decoded[$key], true, 'Hook configurations can only contain boolean values');
+            self::assertContainsOnlyBool($decoded[$key], 'Hook configurations can only contain boolean values');
         }
     }
 }

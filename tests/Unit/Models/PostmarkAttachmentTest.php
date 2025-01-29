@@ -67,7 +67,9 @@ class PostmarkAttachmentTest extends TestCase
     public function testThatAFileWillBeReadFromDiskAndEncodedWithBase64Encoding(): void
     {
         $path = __DIR__ . '/../../postmark-logo.png';
-        $expect = base64_encode(file_get_contents($path));
+        $contents = file_get_contents($path);
+        self::assertIsString($contents);
+        $expect = base64_encode($contents);
         $file = PostmarkAttachment::fromFile($path, 'Foo.txt');
         self::assertFileContentEquals($expect, $file);
     }
