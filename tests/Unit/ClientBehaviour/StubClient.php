@@ -17,11 +17,9 @@ final class StubClient extends PostmarkClientBase
      * @param non-empty-string        $method
      * @param non-empty-string        $path
      * @param array<array-key, mixed> $params
-     *
-     * @return array<array-key, mixed>
      */
-    public function send(string $method, string $path, array $params = []): array
+    public function send(string $method, string $path, array $params = []): void
     {
-        return $this->processRestRequest($method, $path, $params);
+        $this->processRestRequest($method, $path, $params);
     }
 }
