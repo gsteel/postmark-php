@@ -21,13 +21,13 @@ jobs:
     name: Test Coverage
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.0
-      - uses: shivammathur/setup-php@2.32.0
+      - uses: actions/checkout@v6.1.0
+      - uses: shivammathur/setup-php@2.37.2
         with:
           php-version: ${{ env.stable_php }}
           coverage: pcov
           ini-values: pcov.enabled=1
-      - uses: "ramsey/composer-install@3.0.0"
+      - uses: "ramsey/composer-install@3.2.1"
       - run: php ./vendor/bin/phpunit --coverage-clover=coverage.xml
       - uses: codecov/codecov-action@v5
         with:
@@ -42,11 +42,11 @@ jobs:
     name: "Check for missing dependencies"
     runs-on: "ubuntu-latest"
     steps:
-      - uses: actions/checkout@v6.0.0
-      - uses: shivammathur/setup-php@2.32.0
+      - uses: actions/checkout@v6.1.0
+      - uses: shivammathur/setup-php@2.37.2
         with:
           php-version: ${{ env.stable_php }}
           ini-values: memory_limit=-1
           extensions: ${{ env.php_extensions }}
-      - uses: "ramsey/composer-install@3.0.0"
+      - uses: "ramsey/composer-install@3.2.1"
       - run: make deps
